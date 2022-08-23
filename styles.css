@@ -35,3 +35,53 @@ span {
   height: 1000px;
   width: 1000px;
 }
+
+/* Modal */
+.highscores-modal::backdrop {
+  background: rgb(0 0 0 / 0.4);
+}
+
+.highscores-modal {
+  padding: 7px 9px 11px 9px;
+  width: 25%;
+  height: 25%;
+}
+
+.highscores-modal-grid {
+  display: grid;
+  grid-template-rows: auto 1fr 1.5fr auto;
+}
+
+.highscores {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-right: 9px;
+  padding-left: 9px;
+}
+
+.highscores-message {
+  align-self: center;
+}
+
+.modal-close-container {
+  display: flex;
+  justify-content: right;
+}
+
+.modal-close {
+  cursor: pointer;
+  text-align: right;
+}
+
+.highscore-container {
+  display: grid;
+  grid-template-columns: 1fr 30px;
+}
+
+.play-again-button {
+  justify-self: center;
+  width: 100px;
+  margin-top: 6px;
+}

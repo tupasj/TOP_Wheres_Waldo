@@ -12,15 +12,15 @@
     <button class="start-button">Start game</button>
     <div class="images-container">
       <div class="targets">
-        <div class="target">
+        <div id="target1-sidebar" class="target">
           <img src="images/target1.png" alt="target1" />
           <span>Target 1</span>
         </div>
-        <div class="target">
+        <div id="target2-sidebar" class="target">
           <img src="images/target2.png" alt="target2" />
           <span>Target 2</span>
         </div>
-        <div class="target">
+        <div id="target3-sidebar" class="target">
           <img src="images/target3.png" alt="target3" />
           <span>Target 3</span>
         </div>
@@ -34,6 +34,33 @@
         </map>
       </div>
     </div>
+    <!-- Modal -->
+    <dialog class="highscores-modal">
+      <div class="highscores-modal-grid">
+        <div class="modal-close-container">
+          <span class="modal-close">X</span>
+        </div>
+        <div class="highscores-message">
+          <div>Congratulations!</div>
+          <div>You've made a high score!</div>
+        </div>
+        <div class="highscores">
+          <div class="highscore-container">
+            <span class="player-name">#1: Player</span
+            ><span class="highscore-value">xs</span>
+          </div>
+          <div class="highscore-container">
+            <span class="player-name">#2: Player</span
+            ><span class="highscore-value">xs</span>
+          </div>
+          <div class="highscore-container">
+            <span class="player-name">#3: Player</span
+            ><span class="highscore-value">xs</span>
+          </div>
+        </div>
+        <button class="play-again-button">Play again</button>
+      </div>
+    </dialog>
     <script src="main.js" type="module"></script>
   </body>
 </html>

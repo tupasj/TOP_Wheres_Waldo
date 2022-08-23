@@ -60,7 +60,7 @@ const timer = () => {
     gameTimer.start();
     setInterval(() => {
       const timeInSeconds = Math.round(gameTimer.getTime() / 1000);
-      document.querySelector(".timer").textContent = timeInSeconds;
+      document.querySelector(".timer").textContent = `${timeInSeconds}s`;
     }, 100);
   };
 

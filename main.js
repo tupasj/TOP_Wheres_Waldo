@@ -1,5 +1,5 @@
-import { targets } from "./targets.js";
-import { timer } from "./timer.js";
+import { targets } from "./scripts/targets.js";
+import { timer } from "./scripts/timer.js";
 
 targets();
 timer();
