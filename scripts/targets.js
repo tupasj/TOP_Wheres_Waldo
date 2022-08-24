@@ -1,38 +1,58 @@
 import { openModal } from "./modal.js";
 
 const targets = () => {
-  const target1Discovered = () => {
-    const target1SidebarImg = document.querySelector("#target1-sidebar > img");
-    target1SidebarImg.style.opacity = 0.25;
-    const target1SidebarText = document.querySelector("#target1-sidebar > span");
-    target1SidebarText.style.textDecoration = 'line-through';
-    openModal();
-    console.log("target 1 discovered");
+  const unmarkedTargets = ["target1", "target2", "target3"];
+  const markedTargets = [];
+
+  const markTarget = (targetName) => {
+    const targetIndex = unmarkedTargets.indexOf(targetName);
+    if (targetIndex !== -1) {
+      unmarkedTargets.splice(targetIndex, 1);
+      markedTargets.push(targetName);
+    };
+    console.log('unmarkedTargets: ');
+    console.log(unmarkedTargets);
+    console.log('markedTargets:');
+    console.log(markedTargets);
+    console.log(`markTarget ran: ${targetName} discovered`);
   };
 
-  const target2Discovered = () => {
-    const target2SidebarImg = document.querySelector("#target2-sidebar > img");
-    target2SidebarImg.style.opacity = 0.25;
-    const target2SidebarText = document.querySelector("#target2-sidebar > span");
-    target2SidebarText.style.textDecoration = 'line-through';
-    console.log("target 2 discovered");
+  const updateSidebar = (targetImage, targetText) => {
+    targetImage.style.opacity = 0.25;
+    targetText.style.textDecoration = 'line-through';
   };
 
-  const target3Discovered = () => {
-    const target3SidebarImg = document.querySelector("#target3-sidebar > img");
-    target3SidebarImg.style.opacity = 0.25;
-    const target3SidebarText = document.querySelector("#target3-sidebar > span");
-    target3SidebarText.style.textDecoration = 'line-through';
-    console.log("target 3 discovered");
+  const checkForCompletion = () => {
+    if (markedTargets.length === 3) {
+      console.log('end game');
+    };
+  };
+
+  const targetDiscovered = (targetName, targetImage, targetText) => {
+    markTarget(targetName);
+    updateSidebar(targetImage, targetText);
+    checkForCompletion();
   };
 
   const target1 = document.querySelector(".target1");
+  const target1Img = document.querySelector("#target1-sidebar > img");
+  const target1Txt = document.querySelector("#target1-sidebar > span");
   const target2 = document.querySelector(".target2");
+  const target2Img = document.querySelector("#target2-sidebar > img");
+  const target2Txt = document.querySelector("#target2-sidebar > span");
   const target3 = document.querySelector(".target3");
+  const target3Img = document.querySelector("#target3-sidebar > img");
+  const target3Txt = document.querySelector("#target3-sidebar > span");
 
-  target1.addEventListener("click", target1Discovered);
-  target2.addEventListener("click", target2Discovered);
-  target3.addEventListener("click", target3Discovered);
+  target1.addEventListener("click", () => {
+    targetDiscovered("target1", target1Img, target1Txt);
+  });
+  target2.addEventListener("click", () => {
+    targetDiscovered("target2", target2Img, target2Txt);
+  });
+  target3.addEventListener("click", () => {
+    targetDiscovered("target3", target3Img, target3Txt);
+  });
 };
 
 export { targets };
