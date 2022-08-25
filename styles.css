@@ -44,7 +44,7 @@ span {
 .highscores-modal {
   padding: 7px 9px 11px 9px;
   width: 25%;
-  height: 25%;
+  height: 27%;
 }
 
 .highscores-modal-grid {
@@ -59,6 +59,7 @@ span {
   gap: 25px;
   padding-right: 9px;
   padding-left: 9px;
+  width: 100%;
 }
 
 .highscores-message {
@@ -77,11 +78,20 @@ span {
 
 .highscore-container {
   display: grid;
-  grid-template-columns: 1fr 30px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.highscore-container > span > span {
+  display: inline;
 }
 
 .play-again-button {
   justify-self: center;
   width: 100px;
   margin-top: 6px;
+}
+
+.username-input {
+  margin-top: 9px;
+  margin-bottom: 9px;
 }

@@ -1,8 +1,16 @@
-import { openModal } from "./modal.js";
+import { openModalHighscores } from "./modal.js";
+import { getRankings } from "../firebaseServices/firebaseDatabase.js";
+import { gameTimer } from "./timerFactory.js";
 
 const targets = () => {
   const unmarkedTargets = ["target1", "target2", "target3"];
   const markedTargets = [];
+
+  const getUserScore = (timer) => {
+    let userScore = timer.getTime();
+    userScore = Math.round(userScore / 1000);
+    return userScore;
+  };
 
   const markTarget = (targetName) => {
     const targetIndex = unmarkedTargets.indexOf(targetName);
@@ -10,11 +18,6 @@ const targets = () => {
       unmarkedTargets.splice(targetIndex, 1);
       markedTargets.push(targetName);
     };
-    console.log('unmarkedTargets: ');
-    console.log(unmarkedTargets);
-    console.log('markedTargets:');
-    console.log(markedTargets);
-    console.log(`markTarget ran: ${targetName} discovered`);
   };
 
   const updateSidebar = (targetImage, targetText) => {
@@ -22,9 +25,23 @@ const targets = () => {
     targetText.style.textDecoration = 'line-through';
   };
 
-  const checkForCompletion = () => {
+  const checkForCompletion = async () => {
     if (markedTargets.length === 3) {
-      console.log('end game');
+      gameTimer.stop();
+      const userScore = getUserScore(gameTimer);
+      // Get rankings array from database
+      const rankings = await getRankings();
+      for (let i = 0; i < rankings.length; i++) {
+        if (userScore < rankings[i].score) {
+          // Replace rankings[i] object with a new object returned by openModalHighScores
+          const newHighscore = await openModalHighscores(userScore);
+          const index = rankings.indexOf(rankings[i]);
+          rankings.splice(index, 1, newHighscore);
+          return;
+        } else {
+          // openModalDefault()
+        }
+      };
     };
   };
 
