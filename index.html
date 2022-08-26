@@ -12,21 +12,21 @@
     <button class="start-button">Start game</button>
     <div class="images-container">
       <div class="targets">
-        <div id="target1-sidebar" class="target">
-          <img src="images/target1.png" alt="target1" />
+        <div id="target1" class="target">
+          <img src="https://cdn.jsdelivr.net/gh/tupasj/TOP_Wheres_Waldo/images/target1.png" alt="target1" />
           <span>Target 1</span>
         </div>
-        <div id="target2-sidebar" class="target">
-          <img src="images/target2.png" alt="target2" />
+        <div id="target2" class="target">
+          <img src="https://cdn.jsdelivr.net/gh/tupasj/TOP_Wheres_Waldo/images/target2.png" alt="target2" />
           <span>Target 2</span>
         </div>
-        <div id="target3-sidebar" class="target">
-          <img src="images/target3.png" alt="target3" />
+        <div id="target3" class="target">
+          <img src="https://cdn.jsdelivr.net/gh/tupasj/TOP_Wheres_Waldo/images/target3.png" alt="target3" />
           <span>Target 3</span>
         </div>
       </div>
       <div class="main-image">
-        <img src="images/dbm2.png" alt="dbm2" usemap="#image-map" />
+        <img src="https://cdn.jsdelivr.net/gh/tupasj/TOP_Wheres_Waldo/images/dbm2.png" alt="dbm2" usemap="#image-map" />
         <map name="image-map">
           <area class="target1" coords="789,642,51" shape="circle" />
           <area class="target2" coords="268,738,40" shape="circle" />
@@ -35,7 +35,7 @@
       </div>
     </div>
     <!-- Modal -->
-    <dialog class="highscores-modal">
+    <dialog class="highscores-modal modal">
       <div class="highscores-modal-grid">
         <div class="modal-close-container">
           <span class="modal-close">X</span>
@@ -49,15 +49,15 @@
           </div>
         </div>
         <div class="highscores">
-          <div class="highscore-container" data-rank="1">
+          <div class="highscore-container">
             <span>#1: <span class="player-name">Player</span></span>
             <span><span class="highscore-value">x</span> s</span>
           </div>
-          <div class="highscore-container" data-rank="2">
+          <div class="highscore-container">
             <span>#2: <span class="player-name">Player</span></span>
             <span><span class="highscore-value">x</span> s</span>
           </div>
-          <div class="highscore-container" data-rank="3">
+          <div class="highscore-container">
             <span>#3: <span class="player-name">Player</span></span>
             <span><span class="highscore-value">x</span> s</span>
           </div>
@@ -65,7 +65,7 @@
         <button class="play-again-button">Play again</button>
       </div>
     </dialog>
-    <dialog class="general-modal">
+    <dialog class="general-modal modal">
       <button class="play-again-button">Play again</button>
     </dialog>
     <script src="main.js" type="module"></script>

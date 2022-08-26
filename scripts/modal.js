@@ -10,7 +10,7 @@ const updateScoreboardInfo = (data) => {
 const openModalGeneral = () => {
   const generalModal = document.querySelector('.general-modal');
   generalModal.showModal();
-}
+};
 
 const openModalHighscores = (data) => {
   updateScoreboardInfo(data);
