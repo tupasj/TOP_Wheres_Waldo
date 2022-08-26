@@ -54,7 +54,7 @@ const startTimer = () => {
   gameTimer.start();
   setInterval(() => {
     const timeInSeconds = Math.round(gameTimer.getTime() / 1000);
-    document.querySelector(".timer").textContent = `${timeInSeconds}s`;
+    document.querySelector(".timer").textContent = `${timeInSeconds}`;
   }, 100);
 };
 

@@ -1,4 +1,4 @@
-import { get, getDatabase, ref } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-database.js";
+import { get, getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-database.js";
 import { firebaseApp } from "./firebaseConfig.js";
 
 // Initialize Realtime Database and get a reference to the service
@@ -20,4 +20,8 @@ const getRankings = async () => {
     };
 };
 
-export { getRankings };
+const writeNewHighscorerData = (newData) => {
+    set(databaseRef, newData);
+};
+
+export { getRankings, writeNewHighscorerData };

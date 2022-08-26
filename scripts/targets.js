@@ -1,16 +1,8 @@
-import { openModalHighscores } from "./modal.js";
-import { getRankings } from "../firebaseServices/firebaseDatabase.js";
-import { gameTimer } from "./timerFactory.js";
+import { endGame } from "./endGame.js";
 
 const targets = () => {
   const unmarkedTargets = ["target1", "target2", "target3"];
   const markedTargets = [];
-
-  const getUserScore = (timer) => {
-    let userScore = timer.getTime();
-    userScore = Math.round(userScore / 1000);
-    return userScore;
-  };
 
   const markTarget = (targetName) => {
     const targetIndex = unmarkedTargets.indexOf(targetName);
@@ -25,30 +17,12 @@ const targets = () => {
     targetText.style.textDecoration = 'line-through';
   };
 
-  const checkForCompletion = async () => {
-    if (markedTargets.length === 3) {
-      gameTimer.stop();
-      const userScore = getUserScore(gameTimer);
-      // Get rankings array from database
-      const rankings = await getRankings();
-      for (let i = 0; i < rankings.length; i++) {
-        if (userScore < rankings[i].score) {
-          // Replace rankings[i] object with a new object returned by openModalHighScores
-          const newHighscore = await openModalHighscores(userScore);
-          const index = rankings.indexOf(rankings[i]);
-          rankings.splice(index, 1, newHighscore);
-          return;
-        } else {
-          // openModalDefault()
-        }
-      };
-    };
-  };
-
   const targetDiscovered = (targetName, targetImage, targetText) => {
     markTarget(targetName);
     updateSidebar(targetImage, targetText);
-    checkForCompletion();
+    if (markedTargets.length === 3) {
+      endGame();
+    };
   };
 
   const target1 = document.querySelector(".target1");

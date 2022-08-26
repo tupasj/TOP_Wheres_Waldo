@@ -1,35 +1,21 @@
-import { getRankings } from "../firebaseServices/firebaseDatabase.js";
-
-const openModal = () => {
-  const highscoresModal = document.querySelector(".highscores-modal");
-  highscoresModal.showModal();
-};
-
-const makeHighScorerInfo = (userScore) => {
-  const usernameInput = document.querySelector(".username-input");
-  const usernameInputValue = usernameInput.textContent;
-  const highScorerInfo = {
-    name: usernameInputValue,
-    score: userScore,
-  };
-  return highScorerInfo;
-};
-
-const openModalHighscores = async (userScore) => {
-  const highscoresModal = document.querySelector(".highscores-modal");
-  highscoresModal.showModal();
-
-  // Display names and score
-  const rankings = await getRankings();
+const updateScoreboardInfo = (data) => {
   const playerNames = Array.from(document.querySelectorAll('.player-name'));
   const playerScores = Array.from(document.querySelectorAll('.highscore-value'));
-  for (let i = 0; i < playerNames.length; i++) {
-    playerNames[i].textContent = rankings[i].name;
-    playerScores[i].textContent = rankings[i].score;
+  for (let i = 0; i < data.length; i++) {
+    playerNames[i].textContent = data[i].name;
+    playerScores[i].textContent = data[i].score;
   };
+};
 
-  const userHighscore = makeHighScorerInfo(userScore);
-  return userHighscore;
+const openModalGeneral = () => {
+  const generalModal = document.querySelector('.general-modal');
+  generalModal.showModal();
+}
+
+const openModalHighscores = (data) => {
+  updateScoreboardInfo(data);
+  const highscoresModal = document.querySelector(".highscores-modal");
+  highscoresModal.showModal();
 };
 
 const closeModal = () => {
@@ -40,4 +26,4 @@ const closeModal = () => {
 const modalClose = document.querySelector(".modal-close");
 modalClose.addEventListener("click", closeModal);
 
-export { openModal, closeModal, openModalHighscores };
+export { openModalGeneral, openModalHighscores, closeModal, updateScoreboardInfo };
